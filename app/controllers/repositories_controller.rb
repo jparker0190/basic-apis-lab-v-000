@@ -8,7 +8,7 @@ class RepositoriesController < ApplicationController
     begin
           @stocks = Faraday.get 'https://api.iextrading.com/1.0/tops/last?symbols=SNAP,fb,AIG%2b'
           @bodies = JSON.parse(@stocks.body)
-        end
+    end
   render 'search'
 end
 end
