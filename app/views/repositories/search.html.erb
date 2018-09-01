@@ -1,1 +1,6 @@
 <%=@body.inspect%>
+<ul>
+<% @body.each do |b|%>
+<li>
+<%= b["symbol"]%>
+</li>
