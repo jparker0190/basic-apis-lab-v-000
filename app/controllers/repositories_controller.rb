@@ -10,8 +10,10 @@ class RepositoriesController < ApplicationController
       req.params['client_id'] = 'v1.c5f032e339de8903'
       req.params['client_secret'] = '914cf3f0c0c5f416a17ec435261283d74f4d8332'
       req.params['q'] = params[:query]
-  end
-  body = JSON.parse(@resp.body)
+    end
+    @stocks = Faraday.get 'https://api.iextrading.com/1.0/tops/last?symbols=SNAP,fb,AIG%2b'
+    body = JSON.parse(@resp.body)
+    @body = JSON.parse(@stocks.body)
   if @resp.success?
     @results = body["items"]
   else
